@@ -9,13 +9,14 @@ CarbonTrack is a cloud-based personal carbon footprint tracking and analytics pl
 
 ## 🚀 Live Demo
 
-🌐 **Live Application:** To be added after deployment
+## Live Demo:
+https://carbontrack-platform.netlify.app/
 
-⚙️ **Backend API:** To be added after deployment
+## Backend API:
+https://carbontrack-api-p2lz.onrender.com/
 
 📦 **GitHub Repository:** https://github.com/abhinayakuchi-source/Personal-Carbon-Footprint-Tracker
 
-> The actual Live Demo URL will be added after CarbonTrack is deployed.
 
 ---
 
