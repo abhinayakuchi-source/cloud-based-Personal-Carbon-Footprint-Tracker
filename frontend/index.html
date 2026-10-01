@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CarbonTrack | Personal Carbon Footprint Tracker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5faf7;
+            color: #20352a;
+        }
+
+        .navbar {
+            background: white;
+            padding: 18px 7%;
+            border-bottom: 1px solid #e5eee8;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #17613f;
+            text-decoration: none;
+        }
+
+        .brand i {
+            color: #31a66c;
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: #42554b;
+            font-weight: 500;
+            margin: 0 8px;
+        }
+
+        .nav-link:hover {
+            color: #17613f;
+        }
+
+        .btn-login {
+            border: 1px solid #17613f;
+            color: #17613f;
+            border-radius: 8px;
+            padding: 9px 20px;
+            font-weight: 600;
+        }
+
+        .btn-login:hover {
+            background: #17613f;
+            color: white;
+        }
+
+        .btn-start {
+            background: #17613f;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 22px;
+            font-weight: 600;
+            border: none;
+        }
+
+        .btn-start:hover {
+            background: #0d4b30;
+            color: white;
+        }
+
+        .hero {
+            padding: 90px 7%;
+            background:
+                radial-gradient(circle at 85% 30%, #d9f4e5 0, transparent 35%),
+                linear-gradient(135deg, #f7fcf9, #eaf7ef);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #dff5e8;
+            color: #17613f;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.12;
+            max-width: 700px;
+        }
+
+        .hero h1 span {
+            color: #238653;
+        }
+
+        .hero p {
+            color: #65766d;
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin-top: 20px;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        .hero-dashboard {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(20, 70, 45, 0.12);
+            border: 1px solid #dfece4;
+        }
+
+        .mini-card {
+            border-radius: 14px;
+            padding: 18px;
+            background: #f7fbf8;
+            border: 1px solid #e4eee8;
+        }
+
+        .mini-number {
+            font-size: 25px;
+            font-weight: bold;
+            color: #17613f;
+        }
+
+        .mini-label {
+            color: #78857e;
+            font-size: 13px;
+        }
+
+        .chart-area {
+            height: 170px;
+            display: flex;
+            align-items: end;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(#53c889, #17613f);
+            border-radius: 7px 7px 0 0;
+        }
+
+        .features {
+            padding: 80px 7%;
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            font-size: 34px;
+            font-weight: 700;
+        }
+
+        .section-heading p {
+            color: #718077;
+            max-width: 650px;
+            margin: 12px auto;
+        }
+
+        .feature-card {
+            height: 100%;
+            border: 1px solid #e1ebe5;
+            border-radius: 16px;
+            padding: 30px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(25, 75, 48, 0.08);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: #e0f5e8;
+            color: #17613f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-size: 19px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #718077;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .how-section {
+            padding: 80px 7%;
+            background: #f4faf6;
+        }
+
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #17613f;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto auto 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .step p {
+            color: #718077;
+            font-size: 14px;
+        }
+
+        .cta {
+            padding: 70px 7%;
+            background: #123c2b;
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .cta p {
+            color: #c4d8cd;
+            margin: 15px auto 25px;
+        }
+
+        .cta .btn-start {
+            background: #7ee2a8;
+            color: #103c29;
+        }
+
+        footer {
+            background: #0b2c20;
+            color: #b9cec1;
+            padding: 25px 7%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        @media(max-width: 900px) {
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-dashboard {
+                margin-top: 40px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+
+    <div class="container-fluid">
+
+        <a href="index.html" class="brand">
+            <i class="bi bi-leaf-fill"></i>
+            CarbonTrack
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">
+                        Features
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#how">
+                        How It Works
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3">
+                    <a href="login.html" class="btn btn-login">
+                        Login
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-2">
+                    <a href="register.html" class="btn btn-start">
+                        Get Started
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="row align-items-center">
+
+        <div class="col-lg-7">
+
+            <span class="hero-badge">
+                <i class="bi bi-leaf-fill me-1"></i>
+                Personal Carbon Intelligence
+            </span>
+
+            <h1>
+                Understand Your
+                <span>Carbon Footprint.</span>
+                Build a Greener Future.
+            </h1>
+
+            <p>
+                CarbonTrack helps you calculate, monitor and understand
+                your personal carbon emissions from transportation,
+                electricity, food and lifestyle activities.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="register.html" class="btn btn-start me-2">
+                    Start Tracking
+                    <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+
+                <a href="#features" class="btn btn-outline-success">
+                    Explore Features
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- DASHBOARD PREVIEW -->
+
+        <div class="col-lg-5">
+
+            <div class="hero-dashboard">
+
+                <div class="d-flex justify-content-between mb-4">
+
+                    <div>
+                        <small class="text-muted">
+                            Monthly Footprint
+                        </small>
+
+                        <h3 class="fw-bold mt-1">
+                            186.4
+                            <small class="fs-6 text-muted">
+                                kg CO₂e
+                            </small>
+                        </h3>
+                    </div>
+
+                    <span class="badge text-bg-success h-25">
+                        ↓ 8.4%
+                    </span>
+
+                </div>
+
+
+                <div class="row g-3">
+
+                    <div class="col-6">
+
+                        <div class="mini-card">
+
+                            <div class="mini-number">
+                                68%
+                            </div>
+
+                            <div class="mini-label">
+                                Goal Progress
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-6">
+
+                        <div class="mini-card">
+
+                            <div class="mini-number">
+                                17
+                            </div>
+
+                            <div class="mini-label">
+                                Green Actions
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mt-4">
+
+                    <div class="d-flex justify-content-between">
+
+                        <small class="text-muted">
+                            Monthly Trend
+                        </small>
+
+                        <small class="text-success">
+                            Improving
+                        </small>
+
+                    </div>
+
+                    <div class="chart-area">
+
+                        <div class="bar" style="height:75%;"></div>
+                        <div class="bar" style="height:68%;"></div>
+                        <div class="bar" style="height:62%;"></div>
+                        <div class="bar" style="height:58%;"></div>
+                        <div class="bar" style="height:52%;"></div>
+                        <div class="bar" style="height:42%;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="features" id="features">
+
+    <div class="section-heading">
+
+        <h2>
+            Everything You Need to Track Your Impact
+        </h2>
+
+        <p>
+            A complete personal carbon management platform
+            designed to help you understand your emissions
+            and make informed sustainability choices.
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-calculator"></i>
+                </div>
+
+                <h4>
+                    Carbon Calculator
+                </h4>
+
+                <p>
+                    Calculate emissions from transportation,
+                    electricity, food and lifestyle activities
+                    using your personal activity data.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-bar-chart-line"></i>
+                </div>
+
+                <h4>
+                    Interactive Dashboard
+                </h4>
+
+                <p>
+                    View your carbon footprint through
+                    charts, trends, category breakdowns
+                    and monthly comparisons.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-bullseye"></i>
+                </div>
+
+                <h4>
+                    Personal Goals
+                </h4>
+
+                <p>
+                    Set a monthly carbon target and monitor
+                    your progress toward reducing your
+                    personal environmental impact.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-clock-history"></i>
+                </div>
+
+                <h4>
+                    Carbon History
+                </h4>
+
+                <p>
+                    Store and review your previous calculations
+                    to understand how your footprint changes
+                    over time.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-lightbulb"></i>
+                </div>
+
+                <h4>
+                    Smart Recommendations
+                </h4>
+
+                <p>
+                    Receive personalized sustainability
+                    suggestions based on your largest
+                    emission sources.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    <i class="bi bi-file-earmark-bar-graph"></i>
+                </div>
+
+                <h4>
+                    Reports & Analytics
+                </h4>
+
+                <p>
+                    Generate detailed carbon reports with
+                    category breakdowns, trends and
+                    downloadable data.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section class="how-section" id="how">
+
+    <div class="section-heading">
+
+        <h2>
+            How CarbonTrack Works
+        </h2>
+
+        <p>
+            Start tracking your environmental impact
+            in three simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="step">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <h4>
+                    Create Your Account
+                </h4>
+
+                <p>
+                    Register and create your personal
+                    CarbonTrack profile.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="step">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <h4>
+                    Enter Your Activities
+                </h4>
+
+                <p>
+                    Add information about transportation,
+                    electricity, food and lifestyle.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div class="step">
+
+                <div class="step-number">
+                    3
+                </div>
+
+                <h4>
+                    Track & Improve
+                </h4>
+
+                <p>
+                    Monitor your footprint, set goals
+                    and discover ways to reduce emissions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <h2>
+        Start Understanding Your Carbon Footprint
+    </h2>
+
+    <p>
+        Create your free CarbonTrack account and
+        begin tracking your environmental impact.
+    </p>
+
+    <a href="register.html" class="btn btn-start">
+        Create Account
+        <i class="bi bi-arrow-right ms-2"></i>
+    </a>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        <i class="bi bi-leaf-fill me-1"></i>
+        CarbonTrack
+    </div>
+
+    <div class="mt-2">
+        Personal Carbon Footprint Tracking & Analytics Platform
+    </div>
+
+    <div class="mt-2">
+        © 2026 CarbonTrack. All rights reserved.
+    </div>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

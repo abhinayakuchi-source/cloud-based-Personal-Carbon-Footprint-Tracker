@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | CarbonTrack</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        body {
+            background: #f4f7f5;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0f5132, #198754);
+            position: fixed;
+            left: 0;
+            top: 0;
+            color: white;
+            padding: 24px 16px;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            padding-left: 12px;
+        }
+
+        .brand i {
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85);
+            padding: 13px 15px;
+            border-radius: 10px;
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255,255,255,0.18);
+            color: white;
+        }
+
+        .nav-link i {
+            font-size: 18px;
+        }
+
+        .tip-box {
+            margin-top: 35px;
+            padding: 15px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* MAIN */
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .topbar {
+            background: white;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+        }
+
+        .page-title {
+            font-weight: 700;
+            color: #173b2b;
+        }
+
+        .subtitle {
+            color: #6c757d;
+        }
+
+        /* PROFILE HEADER */
+
+        .profile-header {
+            background: linear-gradient(135deg, #0f5132, #198754);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            border: 3px solid rgba(255,255,255,0.5);
+        }
+
+        .profile-name {
+            font-size: 26px;
+            font-weight: 800;
+        }
+
+        /* CARDS */
+
+        .profile-card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #173b2b;
+            margin-bottom: 20px;
+        }
+
+        .section-title i {
+            color: #198754;
+            margin-right: 8px;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #394b42;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 10px;
+            padding: 11px 13px;
+            border: 1px solid #dce5df;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #198754;
+            box-shadow: 0 0 0 0.2rem rgba(25,135,84,0.12);
+        }
+
+        .save-btn {
+            padding: 11px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* INFO ITEMS */
+
+        .info-item {
+            padding: 15px;
+            background: #f6faf7;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .info-item i {
+            color: #198754;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* GOAL */
+
+        .goal-card {
+            background: #edf8f1;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .goal-value {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f5132;
+        }
+
+        .progress {
+            height: 9px;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            background: #198754;
+        }
+
+        @media (max-width: 992px) {
+
+            .sidebar {
+                width: 210px;
+            }
+
+            .main-content {
+                margin-left: 210px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="brand">
+
+        <i class="bi bi-leaf-fill"></i>
+
+        CarbonTrack
+
+    </div>
+
+
+    <a href="dashboard.html" class="nav-link">
+
+        <i class="bi bi-grid-1x2-fill"></i>
+
+        <span>Overview</span>
+
+    </a>
+
+
+    <a href="calculator.html" class="nav-link">
+
+        <i class="bi bi-calculator-fill"></i>
+
+        <span>Carbon Calculator</span>
+
+    </a>
+
+
+    <a href="history.html" class="nav-link">
+
+        <i class="bi bi-clock-history"></i>
+
+        <span>History</span>
+
+    </a>
+
+
+    <a href="reports.html" class="nav-link">
+
+        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+
+        <span>Reports</span>
+
+    </a>
+
+
+    <a href="profile.html" class="nav-link active">
+
+        <i class="bi bi-person-circle"></i>
+
+        <span>My Profile</span>
+
+    </a>
+
+
+    <a href="settings.html" class="nav-link">
+
+        <i class="bi bi-gear-fill"></i>
+
+        <span>Settings</span>
+
+    </a>
+
+
+    <div class="tip-box">
+
+        <small>
+
+            <i class="bi bi-lightbulb-fill"></i>
+
+            Today's Tip
+
+        </small>
+
+        <p class="mb-0 mt-2 small">
+
+            Accurate profile information helps personalize your
+            carbon footprint calculations.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <h4 class="page-title mb-1">
+                My Profile
+            </h4>
+
+            <p class="subtitle mb-0">
+                Manage your personal information and sustainability preferences
+            </p>
+
+        </div>
+
+
+        <div class="d-flex align-items-center gap-3">
+
+            <button class="btn btn-light rounded-circle">
+
+                <i class="bi bi-bell"></i>
+
+            </button>
+
+
+            <div>
+
+                <strong>Abhinaya</strong>
+
+                <br>
+
+                <small class="text-muted">
+                    Personal Account
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= PROFILE HEADER ================= -->
+
+    <div class="profile-header">
+
+        <div class="d-flex align-items-center gap-4 flex-wrap">
+
+            <div class="profile-avatar">
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+            <div>
+
+                <div class="profile-name">
+                    Abhinaya Kuchi
+                </div>
+
+                <div class="opacity-75">
+                    Personal CarbonTrack Account
+                </div>
+
+                <small class="opacity-75">
+                    <i class="bi bi-calendar3"></i>
+                    Member since 2026
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="row">
+
+
+        <!-- ================= PERSONAL INFORMATION ================= -->
+
+        <div class="col-lg-8">
+
+            <div class="profile-card">
+
+                <div class="section-title">
+
+                    <i class="bi bi-person-vcard-fill"></i>
+
+                    Personal Information
+
+                </div>
+
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            class="form-control"
+                            value="Abhinaya Kuchi">
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            value="abhinaya@example.com">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Age
+                        </label>
+
+                        <input
+                            type="number"
+                            id="age"
+                            class="form-control"
+                            value="20"
+                            min="1">
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Gender
+                        </label>
+
+                        <select id="gender" class="form-select">
+
+                            <option value="female" selected>
+                                Female
+                            </option>
+
+                            <option value="male">
+                                Male
+                            </option>
+
+                            <option value="other">
+                                Other
+                            </option>
+
+                            <option value="prefer-not">
+                                Prefer not to say
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-4">
+
+                        <label class="form-label">
+                            Household Size
+                        </label>
+
+                        <input
+                            type="number"
+                            id="household"
+                            class="form-control"
+                            value="4"
+                            min="1">
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            class="form-control"
+                            placeholder="City / State"
+                            value="Chennai, Tamil Nadu">
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Occupation
+                        </label>
+
+                        <input
+                            type="text"
+                            id="occupation"
+                            class="form-control"
+                            placeholder="Example: Student"
+                            value="Student">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= TRANSPORT ================= -->
+
+            <div class="profile-card">
+
+                <div class="section-title">
+
+                    <i class="bi bi-car-front-fill"></i>
+
+                    Transportation Preferences
+
+                </div>
+
+
+                <div class="row g-3">
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Primary Transportation
+                        </label>
+
+                        <select id="transport" class="form-select">
+
+                            <option value="public">
+                                Public Transport
+                            </option>
+
+                            <option value="car">
+                                Car
+                            </option>
+
+                            <option value="bike" selected>
+                                Motorcycle / Scooter
+                            </option>
+
+                            <option value="bicycle">
+                                Bicycle
+                            </option>
+
+                            <option value="walking">
+                                Walking
+                            </option>
+
+                            <option value="mixed">
+                                Mixed Transportation
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Average Monthly Travel
+                        </label>
+
+                        <select id="travelAmount" class="form-select">
+
+                            <option value="low">
+                                Less than 300 km
+                            </option>
+
+                            <option value="medium" selected>
+                                300 – 700 km
+                            </option>
+
+                            <option value="high">
+                                700 – 1200 km
+                            </option>
+
+                            <option value="very-high">
+                                More than 1200 km
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CARBON GOAL ================= -->
+
+            <div class="profile-card">
+
+                <div class="section-title">
+
+                    <i class="bi bi-bullseye"></i>
+
+                    Personal Carbon Goal
+
+                </div>
+
+
+                <div class="row align-items-end g-3">
+
+
+                    <div class="col-md-7">
+
+                        <label class="form-label">
+                            Monthly CO₂e Target (kg)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="carbonGoal"
+                            class="form-control"
+                            value="150"
+                            min="1">
+
+                    </div>
+
+
+                    <div class="col-md-5">
+
+                        <button
+                            class="btn btn-success save-btn w-100"
+                            onclick="saveProfile()">
+
+                            <i class="bi bi-check-circle-fill me-2"></i>
+
+                            Save Profile
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RIGHT SIDE ================= -->
+
+        <div class="col-lg-4">
+
+
+            <div class="profile-card">
+
+                <div class="section-title">
+
+                    <i class="bi bi-person-check-fill"></i>
+
+                    Account Information
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                    <strong>Email</strong>
+
+                    <br>
+
+                    <small class="text-muted">
+                        abhinaya@example.com
+                    </small>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <i class="bi bi-shield-check"></i>
+
+                    <strong>Account Status</strong>
+
+                    <br>
+
+                    <small class="text-success">
+                        Active
+                    </small>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <i class="bi bi-cloud-check-fill"></i>
+
+                    <strong>Cloud Storage</strong>
+
+                    <br>
+
+                    <small class="text-muted">
+                        MongoDB Atlas
+                    </small>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <i class="bi bi-calendar-check-fill"></i>
+
+                    <strong>Tracking Since</strong>
+
+                    <br>
+
+                    <small class="text-muted">
+                        2026
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- GOAL CARD -->
+
+            <div class="goal-card">
+
+                <small class="text-muted">
+                    Current Monthly Goal
+                </small>
+
+
+                <div class="goal-value">
+                    150 kg
+                </div>
+
+
+                <small class="text-muted">
+                    CO₂e target
+                </small>
+
+
+                <div class="progress mt-3">
+
+                    <div
+                        class="progress-bar"
+                        style="width:68%;">
+
+                    </div>
+
+                </div>
+
+
+                <div class="d-flex justify-content-between mt-2">
+
+                    <small class="text-muted">
+                        Progress
+                    </small>
+
+                    <strong class="text-success">
+                        68%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+function saveProfile() {
+
+    const name =
+        document.getElementById("fullName").value;
+
+    if (name.trim() === "") {
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+    alert(
+        "Profile saved successfully!"
+    );
+
+}
+
+</script>
+<script src="js/profile.js"></script>
+
+</body>
+</html>

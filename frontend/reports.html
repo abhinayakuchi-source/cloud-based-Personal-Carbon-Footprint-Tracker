@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | CarbonTrack</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        body {
+            background: #f4f7f5;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #0f5132, #198754);
+            position: fixed;
+            left: 0;
+            top: 0;
+            color: white;
+            padding: 24px 16px;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 35px;
+            padding-left: 12px;
+        }
+
+        .brand i {
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85);
+            padding: 13px 15px;
+            border-radius: 10px;
+            margin-bottom: 7px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255,255,255,0.18);
+            color: white;
+        }
+
+        .nav-link i {
+            font-size: 18px;
+        }
+
+        .tip-box {
+            margin-top: 35px;
+            padding: 15px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.12);
+        }
+
+        /* MAIN */
+
+        .main-content {
+            margin-left: 250px;
+            padding: 30px;
+        }
+
+        .topbar {
+            background: white;
+            border-radius: 16px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+        }
+
+        .page-title {
+            font-weight: 700;
+            color: #173b2b;
+        }
+
+        .subtitle {
+            color: #6c757d;
+        }
+
+        /* BUTTONS */
+
+        .export-btn {
+            border-radius: 10px;
+            padding: 9px 14px;
+            font-weight: 600;
+        }
+
+        /* SUMMARY CARDS */
+
+        .summary-card {
+            background: white;
+            border-radius: 17px;
+            padding: 20px;
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .summary-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e8f6ed;
+            color: #198754;
+            font-size: 20px;
+        }
+
+        .summary-value {
+            font-size: 27px;
+            font-weight: 800;
+            color: #173b2b;
+        }
+
+        /* CHART CARDS */
+
+        .chart-card {
+            background: white;
+            border-radius: 18px;
+            padding: 24px;
+            margin-top: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: #173b2b;
+        }
+
+        .chart-container {
+            height: 320px;
+            position: relative;
+        }
+
+        /* BREAKDOWN */
+
+        .breakdown-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #edf1ee;
+        }
+
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .category-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #edf8f1;
+            color: #198754;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: #edf1ee;
+        }
+
+        .progress-bar {
+            background: #198754;
+        }
+
+        /* INSIGHT */
+
+        .insight-card {
+            background: linear-gradient(135deg, #0f5132, #198754);
+            color: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .insight-icon {
+            font-size: 35px;
+        }
+
+        /* TARGET */
+
+        .target-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 25px;
+        }
+
+        .target-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: #173b2b;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 992px) {
+
+            .sidebar {
+                width: 210px;
+            }
+
+            .main-content {
+                margin-left: 210px;
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<div class="sidebar">
+
+    <div class="brand">
+
+        <i class="bi bi-leaf-fill"></i>
+
+        CarbonTrack
+
+    </div>
+
+
+    <a href="dashboard.html" class="nav-link">
+
+        <i class="bi bi-grid-1x2-fill"></i>
+
+        <span>Overview</span>
+
+    </a>
+
+
+    <a href="calculator.html" class="nav-link">
+
+        <i class="bi bi-calculator-fill"></i>
+
+        <span>Carbon Calculator</span>
+
+    </a>
+
+
+    <a href="history.html" class="nav-link">
+
+        <i class="bi bi-clock-history"></i>
+
+        <span>History</span>
+
+    </a>
+
+
+    <a href="reports.html" class="nav-link active">
+
+        <i class="bi bi-file-earmark-bar-graph-fill"></i>
+
+        <span>Reports</span>
+
+    </a>
+
+
+    <a href="profile.html" class="nav-link">
+
+        <i class="bi bi-person-circle"></i>
+
+        <span>My Profile</span>
+
+    </a>
+
+
+    <a href="settings.html" class="nav-link">
+
+        <i class="bi bi-gear-fill"></i>
+
+        <span>Settings</span>
+
+    </a>
+
+
+    <div class="tip-box">
+
+        <small>
+
+            <i class="bi bi-lightbulb-fill"></i>
+
+            Today's Tip
+
+        </small>
+
+        <p class="mb-0 mt-2 small">
+
+            Small changes in daily transportation habits can make a measurable
+            difference to your carbon footprint.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<div class="main-content">
+
+
+    <!-- TOPBAR -->
+
+    <div class="topbar d-flex justify-content-between align-items-center flex-wrap gap-3">
+
+        <div>
+
+            <h4 class="page-title mb-1">
+                Carbon Reports
+            </h4>
+
+            <p class="subtitle mb-0">
+                Analyze your carbon footprint and track your progress
+            </p>
+
+        </div>
+
+
+        <div class="d-flex gap-2">
+
+            <button
+                class="btn btn-outline-success export-btn"
+                onclick="exportCSV()">
+
+                <i class="bi bi-filetype-csv"></i>
+
+                Export CSV
+
+            </button>
+
+
+            <button
+                class="btn btn-success export-btn"
+                onclick="exportPDF()">
+
+                <i class="bi bi-file-earmark-pdf"></i>
+
+                Export PDF
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SUMMARY ================= -->
+
+    <div class="row g-4">
+
+
+        <div class="col-md-3">
+
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Total Footprint
+                        </small>
+
+                        <div class="summary-value">
+                            186.4 kg
+                        </div>
+
+                        <small class="text-success">
+                            ↓ 8.4%
+                        </small>
+
+                    </div>
+
+
+                    <div class="summary-icon">
+
+                        <i class="bi bi-cloud-fill"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Target
+                        </small>
+
+                        <div class="summary-value">
+                            150 kg
+                        </div>
+
+                        <small class="text-muted">
+                            Monthly goal
+                        </small>
+
+                    </div>
+
+
+                    <div class="summary-icon">
+
+                        <i class="bi bi-bullseye"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Reduction
+                        </small>
+
+                        <div class="summary-value">
+                            8.4%
+                        </div>
+
+                        <small class="text-success">
+                            Compared with previous month
+                        </small>
+
+                    </div>
+
+
+                    <div class="summary-icon">
+
+                        <i class="bi bi-graph-down-arrow"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="summary-card">
+
+                <div class="d-flex justify-content-between">
+
+                    <div>
+
+                        <small class="text-muted">
+                            Records
+                        </small>
+
+                        <div class="summary-value">
+                            12
+                        </div>
+
+                        <small class="text-muted">
+                            Tracked periods
+                        </small>
+
+                    </div>
+
+
+                    <div class="summary-icon">
+
+                        <i class="bi bi-calendar-check"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TREND CHART ================= -->
+
+    <div class="chart-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <div>
+
+                <div class="section-title">
+                    Carbon Emissions Trend
+                </div>
+
+                <small class="text-muted">
+                    Monthly carbon footprint over time
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="chart-container">
+
+            <canvas id="trendChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BREAKDOWN + DONUT ================= -->
+
+    <div class="row">
+
+
+        <div class="col-lg-7">
+
+            <div class="chart-card">
+
+                <div class="section-title mb-1">
+                    Emission Breakdown
+                </div>
+
+                <small class="text-muted">
+                    Contribution of each category
+                </small>
+
+
+                <!-- TRANSPORT -->
+
+                <div class="breakdown-item">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="category-icon">
+
+                            <i class="bi bi-car-front-fill"></i>
+
+                        </div>
+
+
+                        <div class="flex-grow-1">
+
+                            <div class="d-flex justify-content-between">
+
+                                <strong>
+                                    Transportation
+                                </strong>
+
+                                <span>
+                                    97.0 kg
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress mt-2">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:52%">
+                                </div>
+
+                            </div>
+
+
+                            <small class="text-muted">
+                                52% of total emissions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ELECTRICITY -->
+
+                <div class="breakdown-item">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="category-icon">
+
+                            <i class="bi bi-lightning-charge-fill"></i>
+
+                        </div>
+
+
+                        <div class="flex-grow-1">
+
+                            <div class="d-flex justify-content-between">
+
+                                <strong>
+                                    Electricity
+                                </strong>
+
+                                <span>
+                                    57.8 kg
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress mt-2">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:31%">
+                                </div>
+
+                            </div>
+
+
+                            <small class="text-muted">
+                                31% of total emissions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOD -->
+
+                <div class="breakdown-item">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="category-icon">
+
+                            <i class="bi bi-egg-fried"></i>
+
+                        </div>
+
+
+                        <div class="flex-grow-1">
+
+                            <div class="d-flex justify-content-between">
+
+                                <strong>
+                                    Food
+                                </strong>
+
+                                <span>
+                                    16.6 kg
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress mt-2">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:9%">
+                                </div>
+
+                            </div>
+
+
+                            <small class="text-muted">
+                                9% of total emissions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LIFESTYLE -->
+
+                <div class="breakdown-item">
+
+                    <div class="d-flex align-items-center gap-3">
+
+                        <div class="category-icon">
+
+                            <i class="bi bi-bag-heart-fill"></i>
+
+                        </div>
+
+
+                        <div class="flex-grow-1">
+
+                            <div class="d-flex justify-content-between">
+
+                                <strong>
+                                    Lifestyle
+                                </strong>
+
+                                <span>
+                                    15.0 kg
+                                </span>
+
+                            </div>
+
+
+                            <div class="progress mt-2">
+
+                                <div
+                                    class="progress-bar"
+                                    style="width:8%">
+                                </div>
+
+                            </div>
+
+
+                            <small class="text-muted">
+                                8% of total emissions
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DONUT -->
+
+        <div class="col-lg-5">
+
+            <div class="chart-card">
+
+                <div class="section-title mb-1">
+                    Category Distribution
+                </div>
+
+                <small class="text-muted">
+                    Current monthly footprint
+                </small>
+
+
+                <div style="height:300px; position:relative;">
+
+                    <canvas id="categoryChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TARGET ================= -->
+
+    <div class="target-card">
+
+        <div class="row align-items-center">
+
+
+            <div class="col-md-8">
+
+                <div class="section-title">
+                    Monthly Carbon Goal
+                </div>
+
+                <p class="text-muted mb-3">
+
+                    Your current footprint is
+                    <strong>186.4 kg CO₂e</strong>
+                    against your target of
+                    <strong>150 kg CO₂e</strong>.
+
+                </p>
+
+
+                <div class="progress" style="height:12px;">
+
+                    <div
+                        class="progress-bar"
+                        style="width:68%;">
+
+                    </div>
+
+                </div>
+
+
+                <small class="text-muted">
+                    68% goal progress
+                </small>
+
+            </div>
+
+
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+
+                <div class="target-number">
+                    36.4 kg
+                </div>
+
+                <small class="text-muted">
+                    Above monthly target
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SMART INSIGHT ================= -->
+
+    <div class="insight-card">
+
+        <div class="row align-items-center">
+
+
+            <div class="col-auto">
+
+                <div class="insight-icon">
+
+                    <i class="bi bi-lightbulb-fill"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="col">
+
+                <h5 class="fw-bold">
+                    Smart Sustainability Insight
+                </h5>
+
+                <p class="mb-0">
+
+                    Transportation currently contributes approximately
+                    <strong>52%</strong> of your recorded footprint.
+                    Reducing individual vehicle usage and increasing
+                    public transport usage could help lower this category.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* ================= TREND CHART ================= */
+
+const trendCanvas =
+    document.getElementById("trendChart");
+
+
+new Chart(trendCanvas, {
+
+    type: "line",
+
+    data: {
+
+        labels: [
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct"
+        ],
+
+        datasets: [
+
+            {
+                label: "CO₂e (kg)",
+
+                data: [
+                    224,
+                    217,
+                    209,
+                    201,
+                    203,
+                    186.4
+                ],
+
+                borderColor: "#198754",
+
+                backgroundColor: "rgba(25,135,84,0.10)",
+
+                fill: true,
+
+                tension: 0.4,
+
+                borderWidth: 3,
+
+                pointRadius: 4
+
+            }
+
+        ]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+                display: false
+            }
+
+        },
+
+        scales: {
+
+            y: {
+
+                beginAtZero: false
+
+            }
+
+        }
+
+    }
+
+});
+
+
+/* ================= CATEGORY CHART ================= */
+
+const categoryCanvas =
+    document.getElementById("categoryChart");
+
+
+new Chart(categoryCanvas, {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: [
+            "Transportation",
+            "Electricity",
+            "Food",
+            "Lifestyle"
+        ],
+
+        datasets: [
+
+            {
+
+                data: [
+                    97,
+                    57.8,
+                    16.6,
+                    15
+                ],
+
+                backgroundColor: [
+                    "#198754",
+                    "#20c997",
+                    "#ffc107",
+                    "#6f42c1"
+                ],
+
+                borderWidth: 0
+
+            }
+
+        ]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        cutout: "68%",
+
+        plugins: {
+
+            legend: {
+
+                position: "bottom"
+
+            }
+
+        }
+
+    }
+
+});
+
+
+/* ================= CSV ================= */
+
+function exportCSV() {
+
+    const csvContent =
+        "Category,Emission (kg CO2e)\\n" +
+        "Transportation,97\\n" +
+        "Electricity,57.8\\n" +
+        "Food,16.6\\n" +
+        "Lifestyle,15\\n" +
+        "Total,186.4";
+
+    const blob =
+        new Blob(
+            [csvContent],
+            { type: "text/csv" }
+        );
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const link =
+        document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+        "carbon-report.csv";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+/* ================= PDF PLACEHOLDER ================= */
+
+function exportPDF() {
+
+    alert(
+        "PDF report generation will be connected to the backend in the next stage."
+    );
+
+}
+
+</script>
+
+
+</body>
+</html>
