@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
 
                 const response = await fetch(
-                    "http://localhost:5000/api/auth/register",
+                    "https://carbontrack-api-p2lz.onrender.com/api/auth/register",
                     {
                         method: "POST",
 
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
 
                 const response = await fetch(
-                    "http://localhost:5000/api/auth/login",
+                    "https://carbontrack-api-p2lz.onrender.com/api/auth/login",
                     {
                         method: "POST",
 

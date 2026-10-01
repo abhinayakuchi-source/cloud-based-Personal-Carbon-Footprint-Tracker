@@ -31,7 +31,7 @@ async function loadProfile() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/profile",
+                "https://carbontrack-api-p2lz.onrender.com/api/profile",
                 {
                     method: "GET",
 
@@ -398,7 +398,7 @@ async function updateProfile(event) {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/profile",
+                "https://carbontrack-api-p2lz.onrender.com/api/profile",
                 {
                     method: "PUT",
 
@@ -652,7 +652,7 @@ async function changePassword(event) {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/profile/password",
+                "https://carbontrack-api-p2lz.onrender.com/api/profile/password",
                 {
                     method: "PUT",
 

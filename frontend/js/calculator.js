@@ -497,7 +497,7 @@ async function saveCarbonCalculation(data) {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/carbon",
+                "https://carbontrack-api-p2lz.onrender.com/api/carbon",
                 {
 
                     method:

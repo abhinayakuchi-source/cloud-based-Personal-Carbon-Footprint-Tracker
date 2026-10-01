@@ -30,7 +30,7 @@ async function loadDashboard() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/dashboard",
+                "https://carbontrack-api-p2lz.onrender.com/api/dashboard",
                 {
                     method: "GET",
 

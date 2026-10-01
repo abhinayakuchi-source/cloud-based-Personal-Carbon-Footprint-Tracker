@@ -51,7 +51,7 @@ async function loadHistory(period) {
 
         const response =
             await fetch(
-                `http://localhost:5000/api/history?period=${period}`,
+                `https://carbontrack-api-p2lz.onrender.com/api/history?period=${period}`,
                 {
                     method: "GET",
 
