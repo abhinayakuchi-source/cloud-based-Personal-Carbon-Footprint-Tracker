@@ -9,14 +9,17 @@ CarbonTrack is a cloud-based personal carbon footprint tracking and analytics pl
 
 ## 🚀 Live Demo
 
-## Live Demo:
+🌐 **Live Application:**  
 https://carbontrack-platform.netlify.app/
 
-## Backend API:
+⚙️ **Backend API:**  
 https://carbontrack-api-p2lz.onrender.com/
 
-📦 **GitHub Repository:** https://github.com/abhinayakuchi-source/Personal-Carbon-Footprint-Tracker
+📦 **GitHub Repository:**  
+https://github.com/abhinayakuchi-source/cloud-based-Personal-Carbon-Footprint-Tracker
 
+☁️ **Database:**  
+MongoDB Atlas
 
 ---
 
@@ -247,7 +250,7 @@ CarbonTrack includes:
     ┌─────────────────────────┐
     │      MONGODB ATLAS      │
     │                         │
-    │      ☁️ Cloud DB        │
+    │       ☁️ Cloud DB       │
     └─────────────────────────┘
 
 ---
@@ -436,7 +439,7 @@ CarbonTrack includes:
     │   │   └── reportService.js
     │   │
     │   └── utils/
-    │       ├── carbonFactor.js
+    │       ├── carbonFactors.js
     │       └── validators.js
     │
     ├── .gitignore
@@ -526,7 +529,7 @@ Never upload:
 
 ### 1. Clone the Repository
 
-    git clone https://github.com/abhinayakuchi-source/Personal-Carbon-Footprint-Tracker.git
+    git clone https://github.com/abhinayakuchi-source/cloud-based-Personal-Carbon-Footprint-Tracker.git
 
 ### 2. Enter the Project
 
@@ -633,23 +636,23 @@ The application can be tested for:
 
 ## 🚀 Deployment
 
-CarbonTrack is designed for cloud deployment.
+CarbonTrack is deployed using a cloud-based architecture.
 
 ### Frontend
 
-Netlify
+**Netlify**
 
 Used to host the public CarbonTrack website.
 
 ### Backend
 
-Render
+**Render**
 
 Used to host the Node.js and Express.js backend API.
 
 ### Database
 
-MongoDB Atlas
+**MongoDB Atlas**
 
 Used as the cloud database.
 
@@ -677,24 +680,25 @@ Used as the cloud database.
 
 ## 🌍 Live Application
 
-After deployment, the actual URLs will be added here.
+🌐 **Live Application:**
 
-    🌐 Live Application:
-    YOUR_NETLIFY_URL
+https://carbontrack-platform.netlify.app/
 
-    ⚙️ Backend API:
-    YOUR_RENDER_URL
+⚙️ **Backend API:**
 
-    ☁️ Database:
-    MongoDB Atlas
+https://carbontrack-api-p2lz.onrender.com/
 
-The final Live Demo will allow users to access CarbonTrack through a normal web browser without running the project locally.
+☁️ **Database:**
+
+MongoDB Atlas
+
+CarbonTrack is deployed as a cloud-based application and can be accessed through a web browser without requiring local setup.
 
 ---
 
 ## 📸 Screenshots
 
-The final repository can include screenshots of:
+The repository can include screenshots of:
 
 - Home Page
 - Registration Page
@@ -750,7 +754,7 @@ This project demonstrates practical knowledge of:
 
 **CarbonTrack — Cloud-Based Personal Carbon Footprint Tracking and Analytics Platform**
 
-Developed a full-stack cloud-based platform that enables users to calculate, track, analyze, and monitor personal carbon emissions across transportation, electricity, food, and lifestyle categories. Implemented JWT authentication, bcrypt password hashing, MongoDB Atlas cloud storage, interactive Chart.js dashboards, historical analytics, personal goals, reports, and sustainability recommendations. Designed the application for cloud deployment using Netlify, Render, and MongoDB Atlas.
+Developed a full-stack cloud-based platform that enables users to calculate, track, analyze, and monitor personal carbon emissions across transportation, electricity, food, and lifestyle categories. Implemented JWT authentication, bcrypt password hashing, MongoDB Atlas cloud storage, interactive Chart.js dashboards, historical analytics, personal goals, reports, and sustainability recommendations. Designed and deployed the application using Netlify, Render, and MongoDB Atlas.
 
 ---
 
