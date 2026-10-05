@@ -696,22 +696,6 @@ CarbonTrack is deployed as a cloud-based application and can be accessed through
 
 ---
 
-## 📸 Screenshots
-
-The repository can include screenshots of:
-
-- Home Page
-- Registration Page
-- Login Page
-- Dashboard
-- Carbon Calculator
-- History
-- Profile
-- Reports
-- Settings
-- Live Application
-
----
 
 ## 🔮 Future Enhancements
 
